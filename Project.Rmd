@@ -1,0 +1,121 @@
+---
+title: "Cost of Living in the United States"
+author: "Elnora Gaiser"
+output:
+  word_document: default
+  pdf_document: default
+---
+
+## Introduction: How does income vary throughout the United States compared to the cost of living?
+  
+
+The United States is a relatively large country, when referring to the land area, and has over 300 million people living within its boundaries. While there seems to be a large amount of money that is circulating throughout the country, it is interesting to examine where it all ends up. There are studies that show a median household income around $55,000 in the US, however, many people do not realize that can drastically vary between areas. This could be important information when considering financial laws and policies that need to be made. There are many people living in poverty within the US, and the distribution of income and the cost of living can have a major impact on this number.
+
+## Example 1
+
+
+![Example #1](https://i2.wp.com/ieltsliz.com/wp-content/uploads/2015/01/Bar-Chart-Model.jpg)
+
+I want to start out with a simple graph similar to the one above that shows a comparison of annual household income and the cost of living. This graphic will be informative and should be easy to understand without being too distracting. This will hopefully allow the reader to digest the information before moving on. This type of graph can be created using ggplot2. 
+
+## Example 2
+
+
+
+![example 2](http://res.cloudinary.com/dyd911kmh/image/upload/f_auto,q_auto:best/v1530810622/choropleth-reduced_-_Becca_Robins_nqgh7p.png)
+
+I would like to do something similar to this and now take my information and plot it on a map. This will allow the readers to take the information that they just gathered from the previous graph and visualize it within the US. This can also be created using sf and ggplot2. 
+
+## Example 3
+
+
+![Example #3](https://www.nrel.gov/gis/images/30m_US_Wind.jpg)
+
+Finally, I think it would be nice to have an interactive map where people can actually click on an area and compare it to another area on the map to see the differences. This allows people to choose an area that they are more interested in as opposed to just looking at all of the information for the US as a whole. This can be done using leaflet. 
+
+# Proposed data sources
+
+I am planning on using data mostly from the United States Census Bureau Fact Finder. This will include data regarding household income throughout the United States and also Median Household Income information.
+
+# Proposed methods
+
+I plan on using packages such as dplyr to manipulate the data to use in different graphs as explained above. This potentially includes using things such as renaming certain columns, selecting specific columns, and also joining data. Once I get the data in the form that I need, I can then use sf, ggplot2, and leaflet to make a bar graph and some maps to visually show the readers where these incomes actually are in the United States.
+
+# Expected results
+
+In the end, I would like to be able to show which areas have income significantly lower than the median household income and show how that compares to the cost of living. This could show the areas where poverty is high. This could lead to other studies examining as to why this might be occuring in these areas and other people might be able to propose ideas as to how this can be changed in the future. 
+
+# Materials and methods
+
+Narrative and most code will go here.  Describe what you are doing and show how to do it (with code).
+
+You can do bullets like this:
+
+* The first most important thing
+* The second most important thing
+* The third most important thing
+
+You can do numbers like this:
+
+1. The first most important thing
+2. The second most important thing
+3. The third most important thing
+
+See [http://rmarkdown.rstudio.com/](http://rmarkdown.rstudio.com/) for all the amazing things you can do.
+
+
+Here's my first code chunk.
+```{r}
+1+2
+```
+
+Load any required packages in a code chunk (you may need to install some packages):
+
+```{r, message=F, warning=F}
+library(dplyr)
+library(ggplot2)
+library(maps)
+library(spocc)
+knitr::opts_chunk$set(cache=TRUE)  # cache the results for quick compiling
+```
+
+
+We are going to use the `occ()` function to download _occurrence_ records for the American robin (_Turdus migratorius_) from the [Global Biodiversity Information Facility](gbif.org).
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/Turdus-migratorius-002.jpg" alt="alt text" width="200">
+<small><small><small>Licensed under CC BY-SA 3.0 via [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Turdus-migratorius-002.jpg#/media/File:Turdus-migratorius-002.jpg)</small></small></small>
+
+```{r, warning=F} 
+## define which species to query
+sp='Turdus migratorius'
+
+## run the query and convert to data.frame()
+d = occ(query=sp, from='ebird',limit = 100) %>% occ2df()
+```
+This can take a few seconds.
+
+```{r, fig.width=6, fig.height=3, fig.cap="Map illustrating the known occurrence locations"}
+# Load coastline
+map=map_data("world")
+
+ggplot(d,aes(x=longitude,y=latitude))+
+  geom_polygon(aes(x=long,y=lat,group=group),data=map)+
+  geom_point(col="red")+
+  coord_equal()
+```
+
+
+# Results
+
+Show tables, plots, etc. and describe them.
+
+```{r}
+hist(d$latitude)
+```
+
+# Conclusions
+
+What have you learned?  Are there any broader implications?
+
+# References
+
