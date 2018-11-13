@@ -9,10 +9,9 @@
 <meta name="generator" content="pandoc" />
 
 
-<meta name="author" content="Elnora Gaiser" />
 
 
-<title>Sea Ice Depth/Thickness</title>
+<title></title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -303,62 +302,52 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Sea Ice Depth/Thickness</h1>
-<h4 class="author"><em>Elnora Gaiser</em></h4>
 
 </div>
 
 
-<div id="introduction" class="section level1">
-<h1>Introduction</h1>
-<p>My really awesome and complete introduction will go here.</p>
-<blockquote>
-<p>I know words. I have the best words. ~ Donald Trump</p>
-</blockquote>
+<div id="cost-of-living-in-the-united-states" class="section level1">
+<h1>Cost of Living in the United States</h1>
 </div>
-<div id="materials-and-methods" class="section level1">
-<h1>Materials and methods</h1>
-<p>Narrative and most code will go here. Describe what you are doing and show how to do it (with code).</p>
-<p>You can do bullets like this:</p>
-<ul>
-<li>The first most important thing</li>
-<li>The second most important thing</li>
-<li>The third most important thing</li>
-</ul>
-<p>You can do numbers like this:</p>
-<ol style="list-style-type: decimal">
-<li>The first most important thing</li>
-<li>The second most important thing</li>
-<li>The third most important thing</li>
-</ol>
-<p>See <a href="http://rmarkdown.rstudio.com/" class="uri">http://rmarkdown.rstudio.com/</a> for all the amazing things you can do.</p>
-<p>Here’s my first code chunk.</p>
-<p>Load any required packages in a code chunk (you may need to install some packages):</p>
-<pre class="r"><code>library(dplyr)
-library(ggplot2)
-library(maps)
-library(spocc)
-knitr::opts_chunk$set(cache=TRUE)  # cache the results for quick compiling</code></pre>
-<p>We are going to use the <code>occ()</code> function to download <em>occurrence</em> records for the American robin (<em>Turdus migratorius</em>) from the <a href="gbif.org">Global Biodiversity Information Facility</a>.</p>
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/Turdus-migratorius-002.jpg" alt="alt text" width="200"> <small><small><small>Licensed under CC BY-SA 3.0 via <a href="https://commons.wikimedia.org/wiki/File:Turdus-migratorius-002.jpg#/media/File:Turdus-migratorius-002.jpg">Wikimedia Commons</a></small></small></small></p>
-<pre class="r"><code>## define which species to query
-sp=&#39;Turdus migratorius&#39;
-
-## run the query and convert to data.frame()
-d = occ(query=sp, from=&#39;ebird&#39;,limit = 100) %&gt;% occ2df()</code></pre>
-<p>This can take a few seconds.</p>
-<pre class="r"><code># Load coastline</code></pre>
+<div id="how-does-income-vary-throughout-the-united-states-compared-to-the-cost-of-living" class="section level1">
+<h1>How does income vary throughout the United States compared to the cost of living?</h1>
+<p>The United States is a relatively large country, when referring to the land area, and has over 300 million people living within its boundaries. While there seems to be a large amount of money that is circulating throughout the country, it is interesting to examine where it all ends up. There are studies that show a median household income around $55,000 in the US, however, many people do not realize that can drastically vary between areas. This could be important information when considering financial laws and policies that need to be made. There are many people living in poverty within the US, and the distribution of income and the cost of living can have a major impact on this number.</p>
 </div>
-<div id="results" class="section level1">
-<h1>Results</h1>
-<p>Show tables, plots, etc. and describe them.</p>
+<div id="inspiring-examples" class="section level1">
+<h1>Inspiring Examples</h1>
+<div id="example-1" class="section level2">
+<h2>Example 1</h2>
+<div class="figure">
+<img src="https://i2.wp.com/ieltsliz.com/wp-content/uploads/2015/01/Bar-Chart-Model.jpg" alt="Example #1" />
+<p class="caption">Example #1</p>
 </div>
-<div id="conclusions" class="section level1">
-<h1>Conclusions</h1>
-<p>What have you learned? Are there any broader implications?</p>
+<p>I want to start out with a simple graph similar to the one above that shows a comparison of annual household income and the cost of living. This graphic will be informative and should be easy to understand without being too distracting. This will hopefully allow the reader to digest the information before moving on. This type of graph can be created using ggplot2.</p>
 </div>
-<div id="references" class="section level1">
-<h1>References</h1>
+<div id="example-2" class="section level2">
+<h2>Example 2</h2>
+<div class="figure">
+<img src="http://res.cloudinary.com/dyd911kmh/image/upload/f_auto,q_auto:best/v1530810622/choropleth-reduced_-_Becca_Robins_nqgh7p.png" alt="example 2" />
+<p class="caption">example 2</p>
+</div>
+<p>I would like to do something similar to this and now take my information and plot it on a map. This will allow the readers to take the information that they just gathered from the previous graph and visualize it within the US. This can also be created using sf and ggplot2.</p>
+</div>
+<div id="example-3" class="section level2">
+<h2>Example 3</h2>
+<p>&lt;&gt; <img src="https://www.nrel.gov/gis/images/30m_US_Wind.jpg" alt="Example #3" /></p>
+<p>Finally, I think it would be nice to have an interactive map where people can actually click on an area and compare it to another area on the map to see the differences. This allows people to choose an area that they are more interested in as opposed to just looking at all of the information for the US as a whole. This can be done using leaflet.</p>
+</div>
+</div>
+<div id="proposed-data-sources" class="section level1">
+<h1>Proposed data sources</h1>
+<p>I am planning on using data mostly from the United States Census Bureau Fact Finder. This will include data regarding household income throughout the United States and also Median Household Income information.</p>
+</div>
+<div id="proposed-methods" class="section level1">
+<h1>Proposed methods</h1>
+<p>I plan on using packages such as dplyr to manipulate the data to use in different graphs as explained above. This potentially includes using things such as renaming certain columns, selecting specific columns, and also joining data. Once I get the data in the form that I need, I can then use sf, ggplot2, and leaflet to make a bar graph and some maps to visually show the readers where these incomes actually are in the United States.</p>
+</div>
+<div id="expected-results" class="section level1">
+<h1>Expected results</h1>
+<p>In the end, I would like to be able to show which areas have income significantly lower than the median household income and show how that compares to the cost of living. This could show the areas where poverty is high. This could lead to other studies examining as to why this might be occuring in these areas and other people might be able to propose ideas as to how this can be changed in the future.</p>
 </div>
 
 <!-- give the footer some space -->
