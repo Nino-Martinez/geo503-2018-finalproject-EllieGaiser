@@ -1,12 +1,12 @@
 ---
-title: "Sea Ice Depth/Thickness"
+title: "Changing"
 author: "Elnora Gaiser"
 subtitle: --Still working on First Draft, Not quite ready for review.--
 ---
 
-# Introduction
+# Introduction 
 
-Climate change has been a large topic of concern for many years now and one major impact that is occuring due to climate change is the drastic change in sea ice and glaciers. As Earth gets warmer, snap caps and sea ice are melting faster that many could've imagined. This project will hopefully help depict how much this has changed in recent years.  
+  
 
 # Materials and methods
 
@@ -22,7 +22,7 @@ library(tidyverse)
 
 Downloading the Data:
 
-* We will be using data from NOAA
+* 
 
 ```{r, message=F, warning=F}
 
