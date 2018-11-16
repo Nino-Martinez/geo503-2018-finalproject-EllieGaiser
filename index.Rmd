@@ -1,4 +1,11 @@
 ---
+title: "Temporary Project Information"
+output: html_document
+---
+
+!!!Copy starting from the below dashes.
+
+---
 title: "Changing"
 author: "Elnora Gaiser"
 subtitle: --Still working on First Draft, Not quite ready for review.--
@@ -8,15 +15,20 @@ subtitle: --Still working on First Draft, Not quite ready for review.--
 
   
 
-# Materials and methods
+# Materials and methods 
 
 Install Packages:
 
 ```{r, message=F, warning=F}
 
-library(rnoaa)
-library(ggplot2)
+#Load necessary packages:
+
 library(tidyverse)
+library(ggplot2)
+library(dplyr)
+library(leaflet)
+library(sp)
+library(sf)
 
 ```
 
@@ -26,11 +38,21 @@ Downloading the Data:
 
 ```{r, message=F, warning=F}
 
-# API token: KJVJXNJzmYPkOUgPQDGEQAlEjkPxGozg
+#Leaflet
 
-url <- sidads.colorado.edu/pub/DATASETS/NOAA/G02172/
+noInsp_Clean <- read.csv("data/noInsp_Clean.csv")
 
-seaice(url)
+class(noInsp_Clean)
+
+noInsp_Coords <- noInsp_Clean[,c(14, 13)]
+
+colnames(noInsp_Coords) <- c("long", "lat")
+
+#noInsp_Spatial <- SpatialPointsDataFrame(coords = noInsp_Coords, data = noInsp_Clean, proj4string = CRS("+proj=tmerc +lat_0=40 +lon_0=-78.58333333333333 +k=0.9999375 +x_0=350000 +y_0=0 +ellps=GRS80 +units=m +no_defs"))
+
+#noInsp_Map <- leaflet(data = noInsp_Clean) %>% addTiles() %>% addMarkers(lng = noInsp_Clean$LONGITUDE, lat = noInsp_Clean$LATITUDE, clusterOptions = markerClusterOptions(showCoverageOnHover = ))
+
+#noInsp_Map
 
 ```
 

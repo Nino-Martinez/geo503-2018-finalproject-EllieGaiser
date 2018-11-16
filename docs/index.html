@@ -12,7 +12,7 @@
 <meta name="author" content="Elnora Gaiser" />
 
 
-<title>Sea Ice Depth/Thickness</title>
+<title>Temporary Project Information</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -303,51 +303,47 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Sea Ice Depth/Thickness</h1>
+<h1 class="title toc-ignore">Temporary Project Information</h1>
+<h3 class="subtitle"><em>–Still working on First Draft, Not quite ready for review.–</em></h3>
 <h4 class="author"><em>Elnora Gaiser</em></h4>
 
 </div>
 
 
+<p>!!!Copy starting from the below dashes.</p>
 <div id="introduction" class="section level1">
 <h1>Introduction</h1>
-<p>My really awesome and complete introduction will go here.</p>
-<blockquote>
-<p>I know words. I have the best words. ~ Donald Trump</p>
-</blockquote>
 </div>
 <div id="materials-and-methods" class="section level1">
 <h1>Materials and methods</h1>
-<p>Narrative and most code will go here. Describe what you are doing and show how to do it (with code).</p>
-<p>You can do bullets like this:</p>
-<ul>
-<li>The first most important thing</li>
-<li>The second most important thing</li>
-<li>The third most important thing</li>
-</ul>
-<p>You can do numbers like this:</p>
-<ol style="list-style-type: decimal">
-<li>The first most important thing</li>
-<li>The second most important thing</li>
-<li>The third most important thing</li>
-</ol>
-<p>See <a href="http://rmarkdown.rstudio.com/" class="uri">http://rmarkdown.rstudio.com/</a> for all the amazing things you can do.</p>
-<p>Here’s my first code chunk.</p>
-<p>Load any required packages in a code chunk (you may need to install some packages):</p>
-<pre class="r"><code>library(dplyr)
-library(ggplot2)
-library(maps)
-library(spocc)
-knitr::opts_chunk$set(cache=TRUE)  # cache the results for quick compiling</code></pre>
-<p>We are going to use the <code>occ()</code> function to download <em>occurrence</em> records for the American robin (<em>Turdus migratorius</em>) from the <a href="gbif.org">Global Biodiversity Information Facility</a>.</p>
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/Turdus-migratorius-002.jpg" alt="alt text" width="200"> <small><small><small>Licensed under CC BY-SA 3.0 via <a href="https://commons.wikimedia.org/wiki/File:Turdus-migratorius-002.jpg#/media/File:Turdus-migratorius-002.jpg">Wikimedia Commons</a></small></small></small></p>
-<pre class="r"><code>## define which species to query
-sp=&#39;Turdus migratorius&#39;
+<p>Install Packages:</p>
+<pre class="r"><code>#Load necessary packages:
 
-## run the query and convert to data.frame()
-d = occ(query=sp, from=&#39;ebird&#39;,limit = 100) %&gt;% occ2df()</code></pre>
-<p>This can take a few seconds.</p>
-<pre class="r"><code># Load coastline</code></pre>
+library(tidyverse)
+library(ggplot2)
+library(dplyr)
+library(leaflet)
+library(sp)
+library(sf)</code></pre>
+<p>Downloading the Data:</p>
+<ul>
+<li></li>
+</ul>
+<pre class="r"><code>#Leaflet
+
+noInsp_Clean &lt;- read.csv(&quot;data/noInsp_Clean.csv&quot;)
+
+class(noInsp_Clean)</code></pre>
+<pre><code>## [1] &quot;data.frame&quot;</code></pre>
+<pre class="r"><code>noInsp_Coords &lt;- noInsp_Clean[,c(14, 13)]
+
+colnames(noInsp_Coords) &lt;- c(&quot;long&quot;, &quot;lat&quot;)
+
+#noInsp_Spatial &lt;- SpatialPointsDataFrame(coords = noInsp_Coords, data = noInsp_Clean, proj4string = CRS(&quot;+proj=tmerc +lat_0=40 +lon_0=-78.58333333333333 +k=0.9999375 +x_0=350000 +y_0=0 +ellps=GRS80 +units=m +no_defs&quot;))
+
+#noInsp_Map &lt;- leaflet(data = noInsp_Clean) %&gt;% addTiles() %&gt;% addMarkers(lng = noInsp_Clean$LONGITUDE, lat = noInsp_Clean$LATITUDE, clusterOptions = markerClusterOptions(showCoverageOnHover = ))
+
+#noInsp_Map</code></pre>
 </div>
 <div id="results" class="section level1">
 <h1>Results</h1>
